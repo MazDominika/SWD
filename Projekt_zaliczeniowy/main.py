@@ -6,6 +6,7 @@ import spScreen
 import repository
 import data
 import uteScreen
+import rankingScreen
 
 pygame.init()
 isRunningFlag = True
@@ -21,6 +22,7 @@ topsis = topsisScreen.Topsis()
 rsm = rsmScreen.RSM()
 sp = spScreen.SP()
 ute = uteScreen.UTE()
+ranking = rankingScreen.Ranking()
 
 while isRunningFlag:
 
@@ -54,5 +56,8 @@ while isRunningFlag:
 
     elif repository.state == repository.ScreenState.UTE:
         ute.draw(screen)
-    
+        
+    elif repository.state == repository.ScreenState.RANKING:
+        ranking.draw(screen)
+
     pygame.display.flip()

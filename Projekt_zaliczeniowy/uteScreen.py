@@ -54,8 +54,9 @@ class UTE():
             data.UteDocelowe["TempLato"] = (float(TempLatoInput.text))
             data.UteDocelowe["TempZima"] = (float(TempZimaInput.text))
             data.UteDocelowe["Ocena"] = (float(OcenaGoogleInput.text))
-            
+            repository.state = repository.ScreenState.RANKING
             data.TopsisFunction()
+            repository.WyswietlRankingBtn.action = False
 
         if PrzewyzszeniaInput.clicked == True:
             repository.setparametersstate = repository.SetParametersState.PRZEWYZSZENIA

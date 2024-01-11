@@ -63,6 +63,7 @@ class SP():
         
         if repository.WyswietlRankingBtn.action == True:
             data.SPFunction()
+            repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action == False
 
 

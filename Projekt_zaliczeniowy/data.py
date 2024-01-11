@@ -1,3 +1,4 @@
+import pandas as pd
 
 SPStatusQuo = {"Wysokosc": [], "Przewyzszenie" :[], "Dlugosc": [], "Czas": [] , "TempZima" : [], "TempLato" : [], "Ocena" :[], "Got":[]}
 SPDocelowe  = {"Wysokosc": [], "Przewyzszenie" :[], "Dlugosc": [], "Czas": [] , "TempZima" : [], "TempLato" : [], "Ocena" :[], "Got":[]}

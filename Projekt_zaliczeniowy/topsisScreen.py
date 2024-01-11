@@ -55,8 +55,8 @@ class Topsis():
             data.TopsisWeight["TempLato"] = (float(TempLatoInput.text))
             data.TopsisWeight["TempZima"] = (float(TempZimaInput.text))
             data.TopsisWeight["Ocena"] = (float(OcenaGoogleInput.text))
-            
             data.TopsisFunction()
+            repository.state = repository.ScreenState.RANKING
 
         if PrzewyzszeniaInput.clicked == True:
             repository.setparametersstate = repository.SetParametersState.PRZEWYZSZENIA

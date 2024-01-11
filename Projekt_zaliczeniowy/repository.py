@@ -7,6 +7,7 @@ class ScreenState(Enum):
     RSM = 3
     SP = 4
     UTE = 5
+    RANKING = 6
 
 class SetParametersState(Enum):
     WYSOKOSC = 1

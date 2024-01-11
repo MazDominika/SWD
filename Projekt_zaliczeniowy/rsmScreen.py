@@ -62,5 +62,6 @@ class RSM():
         
         if repository.WyswietlRankingBtn.action == True:
             data.RSMFunction()
+            repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action == False
 
