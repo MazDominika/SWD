@@ -65,3 +65,47 @@ class RSM():
             repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action = False
 
+#---------------------- ZMIANA STANU JAKO SKUTEK KLIKNIECIA------------------
+        if PrzewyzszeniaInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.PRZEWYZSZENIA
+            repository.text = ""
+        if WysokoscInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.WYSOKOSC
+            repository.text = ""
+        if DlugoscInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.DLUGOSC
+            repository.text = ""
+        if CzasInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.CZAS
+            repository.text = ""
+        if OcenaGoogleInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.OCENA_GOOGLE
+            repository.text = ""
+        if GotInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.GOT
+            repository.text = ""
+        if TempLatoInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.TEMP_LATO
+            repository.text = ""
+        if TempZimaInput.clicked == True:
+            repository.setparametersstate = repository.SetParametersState.TEMP_ZIMA
+            repository.text = ""
+
+#------------------------------ UZUPELNIANIE TEKSTEM ----------------------------
+        if repository.setparametersstate == repository.SetParametersState.PRZEWYZSZENIA:
+            PrzewyzszeniaInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.WYSOKOSC:
+            WysokoscInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.DLUGOSC:
+            DlugoscInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.CZAS:
+            CzasInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.OCENA_GOOGLE:
+            OcenaGoogleInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.GOT:
+            GotInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.TEMP_ZIMA:
+            TempZimaInput.text = repository.text
+        if repository.setparametersstate == repository.SetParametersState.TEMP_LATO:
+            TempLatoInput.text = repository.text
+    
