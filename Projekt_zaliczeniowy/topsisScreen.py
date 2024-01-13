@@ -3,6 +3,7 @@ import repository
 import data
 
 pygame.init()
+repository.text = '0.125'
 
 WysokoscInput = repository.TextInput(280,170,repository.TextBox,repository.SetParametersState.WYSOKOSC)
 PrzewyzszeniaInput = repository.TextInput(280,225,repository.TextBox,repository.SetParametersState.PRZEWYZSZENIA)
@@ -34,6 +35,7 @@ class Topsis():
         TempLatoInput.draw(screen)
         TempZimaInput.draw(screen)
 
+    
         if repository.WrocBtn.action == True:
             repository.state = repository.ScreenState.MENU
             repository.WrocBtn.action = False
@@ -55,7 +57,8 @@ class Topsis():
             data.TopsisWeight["TempLato"] = (float(TempLatoInput.text))
             data.TopsisWeight["TempZima"] = (float(TempZimaInput.text))
             data.TopsisWeight["Ocena"] = (float(OcenaGoogleInput.text))
-            data.TopsisFunction()
+            data.Ranking = data.TopsisFunction()
+            print(data.Ranking)
             repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action = False
 

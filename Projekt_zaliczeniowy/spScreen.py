@@ -3,7 +3,7 @@ import repository
 import data
 
 pygame.init()
-
+repository.text = "0"
 WysokoscInput = repository.TextInput(280,170,repository.TextBox,repository.SetParametersState.WYSOKOSC)
 PrzewyzszeniaInput = repository.TextInput(280,225,repository.TextBox,repository.SetParametersState.PRZEWYZSZENIA)
 DlugoscInput = repository.TextInput(280,275,repository.TextBox,repository.SetParametersState.DLUGOSC)
@@ -62,7 +62,7 @@ class SP():
             repository.DodajdostatusquoBtn.action = False
         
         if repository.WyswietlRankingBtn.action == True:
-            data.SPFunction()
+            data.Ranking =  data.SPFunction()
             repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action = False
 

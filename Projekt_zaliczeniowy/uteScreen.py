@@ -3,7 +3,7 @@ import repository
 import data
 
 pygame.init()
-
+repository.text = '0'
 WysokoscInput = repository.TextInput(280,170,repository.TextBox,repository.SetParametersState.WYSOKOSC)
 PrzewyzszeniaInput = repository.TextInput(280,225,repository.TextBox,repository.SetParametersState.PRZEWYZSZENIA)
 DlugoscInput = repository.TextInput(280,275,repository.TextBox,repository.SetParametersState.DLUGOSC)
@@ -55,7 +55,7 @@ class UTE():
             data.UteDocelowe["TempZima"] = (float(TempZimaInput.text))
             data.UteDocelowe["Ocena"] = (float(OcenaGoogleInput.text))
             repository.state = repository.ScreenState.RANKING
-            data.TopsisFunction()
+            data.Ranking = data.UTEStarFunction()
             repository.WyswietlRankingBtn.action = False
 
         if PrzewyzszeniaInput.clicked == True:

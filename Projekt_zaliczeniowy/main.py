@@ -4,7 +4,6 @@ import topsisScreen
 import rsmScreen
 import spScreen
 import repository
-import data
 import uteScreen
 import rankingScreen
 
@@ -37,7 +36,7 @@ while isRunningFlag:
                 repository.text = repository.text[:-1]
             elif event.key == pygame.K_RETURN:
                 repository.setparametersstate = repository.SetParametersState.PRZYCISKI
-                repository.text = "0"
+                repository.text = '0'
             else:
                 repository.text += event.unicode
             
