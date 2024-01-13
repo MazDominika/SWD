@@ -40,7 +40,7 @@ def RSMFunction():
     A_0 = np.insert(A_0,[0],["szczyt status-quo","pasmo status-quo","trasa status-quo"], axis= 1)
     Ranking = rsmAlgorithm.RSM(Szczyty,A_0,A_1,3,terms_vector)
     if Ranking is not None:
-        Ranking = Ranking.iloc[:,:-1]
+        return Ranking.iloc[:,:-1]
 
 
 def TopsisFunction():
@@ -50,10 +50,8 @@ def TopsisFunction():
     nadir = [np.min(x) if terms_vector[idx_x] == max else np.max(x) for idx_x, x in enumerate(generalAlgorithm.DataFrame2Array_without_string(Result_OWD_filtered).transpose())]
     Ranking = topsisAlgorithm.Topsis_method(Szczyty,(3,Szczyty.shape[1]),terms_vector,weight_vector,antyideal_point= nadir)
     if Ranking is not None:
-        Ranking = Ranking.iloc[:,:-1]
+        return Ranking.iloc[:,:-1]
     
-
-
 
 def UTEStarFunction():
 
@@ -64,7 +62,7 @@ def UTEStarFunction():
     weights_vectors, vectors_compartments= uteStarAlgorithm.SetWeights(terms_vector,docelowe_vector,vectors_compartments)
     Ranking = uteStarAlgorithm.UTE_Star(Szczyty,vectors_compartments,weights_vectors,terms_vector)
     if Ranking is not None:
-        Ranking = Ranking.iloc[:,:11]
+        return Ranking.iloc[:,:11]
    
 
 

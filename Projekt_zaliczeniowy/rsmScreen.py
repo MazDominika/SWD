@@ -3,7 +3,7 @@ import repository
 import data
 
 pygame.init()
-
+repository.text = "0"
 WysokoscInput = repository.TextInput(280,170,repository.TextBox,repository.SetParametersState.WYSOKOSC)
 PrzewyzszeniaInput = repository.TextInput(280,225,repository.TextBox,repository.SetParametersState.PRZEWYZSZENIA)
 DlugoscInput = repository.TextInput(280,275,repository.TextBox,repository.SetParametersState.DLUGOSC)
@@ -36,6 +36,8 @@ class RSM():
         
         if  repository.WrocBtn.action == True:
             repository.state = repository.ScreenState.MENU
+            data.RSMDocelowe = {"Wysokosc": [], "Przewyzszenie" :[], "Dlugosc": [], "Czas": [] , "TempZima" : [], "TempLato" : [], "Ocena" :[], "Got":[]}
+            data.RSMtatusQuo = {"Wysokosc": [], "Przewyzszenie" :[], "Dlugosc": [], "Czas": [] , "TempZima" : [], "TempLato" : [], "Ocena" :[], "Got":[]}
             repository.WrocBtn.action = False
 
         if repository.DodajdodocelowychBtn.action == True:
@@ -61,7 +63,7 @@ class RSM():
             repository.DodajdostatusquoBtn.action = False
         
         if repository.WyswietlRankingBtn.action == True:
-            data.RSMFunction()
+            data.Ranking = data.RSMFunction()
             repository.state = repository.ScreenState.RANKING
             repository.WyswietlRankingBtn.action = False
 
