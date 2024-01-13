@@ -26,22 +26,33 @@ UteDocelowe = {"Wysokosc": 0, "Przewyzszenie" :0, "Dlugosc": 0, "Czas": 0, "Temp
 
 Ranking = None
 
-NamesColumnsInGoodOrder = ["Wysokosc","Dlugosc","Czas","Przewyzszenie","TempZima","TempLato","Ocena","Got"]
+NamesColumnsInGoodOrder = ["Wysokosc","Dlugosc","Czas","Przewyzszenie","TempLato","TempZima","Ocena","Got"]
 Szczyty = pd.read_excel(r"dataSheet\SZCZYTY.xlsx")
 
 def SPFunction():
     pass
 
+
 def RSMFunction():
-    terms_vector = [TopsisMinMaxVector[key] for key in NamesColumnsInGoodOrder]  # do poprawy 
+    terms_vector = [TopsisMinMaxVector[key] for key in NamesColumnsInGoodOrder]
     A_1 = np.array([RSMtatusQuo[key] for key in NamesColumnsInGoodOrder],object).transpose()
     A_1 = np.insert(A_1,[0],["szczyt status-quo","pasmo status-quo","trasa status-quo"], axis= 1)
     A_0 = np.array([RSMDocelowe[key] for key in NamesColumnsInGoodOrder],object).transpose()
-    A_0 = np.insert(A_0,[0],["szczyt status-quo","pasmo status-quo","trasa status-quo"], axis= 1)
+    A_0 = np.insert(A_0,[0],["szczyt docelowe","pasmo docelowe","trasa docelowe"], axis= 1)
+
+
     Ranking = rsmAlgorithm.RSM(Szczyty,A_0,A_1,3,terms_vector)
     if Ranking is not None:
-        return Ranking.iloc[:,:-1]
-
+        if Ranking.iloc[0,-1] is not None:
+            idx_el = 0
+            for idx, el in enumerate(Ranking.iloc[:,-1]):
+                if el is None:
+                    idx_el = idx
+                    break
+            return Ranking.iloc[:idx_el,:-1]
+        else:
+            return None
+        
 
 def TopsisFunction():
     terms_vector = [TopsisMinMaxVector[key] for key in NamesColumnsInGoodOrder]

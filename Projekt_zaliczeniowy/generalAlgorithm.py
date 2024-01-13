@@ -24,8 +24,11 @@ def norm(Xarray : np.ndarray) -> np.ndarray:
         v_norm = Xarray**2
         v_norm = sum(v_norm)
         v_norm = v_norm**(1/2)
-        norm_matrix = Xarray/v_norm
-        
+        try:
+            norm_matrix = Xarray/v_norm
+        except ZeroDivisionError:
+            v_norm = np.where(v_norm == 0, 1e-10,v_norm)
+            norm_matrix = Xarray/v_norm
         return norm_matrix
 
 def OWD_with_filter(X, from_col = None, expectional_vector : list = None):
@@ -110,6 +113,8 @@ def OWD_with_filter(X, from_col = None, expectional_vector : list = None):
 
 def InternalConsistency(points, from_col: int, exceptional_vetor : list):
     n = points.shape
+    if n[0] == 1:
+        return points, True
     new_points = OWD_with_filter(points,from_col,exceptional_vetor)[1]
     new_n = new_points.shape
     if n == new_n:

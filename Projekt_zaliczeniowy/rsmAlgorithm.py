@@ -8,16 +8,19 @@ import generalAlgorithm
 
 
 def RSM(Y,A_0 : np.ndarray,A_1 : np.ndarray, from_col :int, exceptional_vetor : list):
-    if not generalAlgorithm.InternalConsistency(deepcopy(A_0),from_col,exceptional_vetor)[1]:
-        print("Zbiór A_0 -> wewnetrzna niesprzeczość niespełniona")
-        return None
-    if not generalAlgorithm.InternalConsistency(deepcopy(A_1),from_col,exceptional_vetor)[1]:
-        print("Zbiór A_1 -> wewnetrzna niesprzeczość niespełniona")
-        return None
+    new_points_A0,test_A0 = generalAlgorithm.InternalConsistency(deepcopy(A_0),from_col,exceptional_vetor)
+    if not test_A0:
+        A_0 = new_points_A0
 
-    if not generalAlgorithm.MutualConsistency(deepcopy(A_0),deepcopy(A_1),from_col,exceptional_vetor)[1]:
-        print("Zbiory A_0 i A_1 -> wzajemna niesprzeczość niespełniona")
-        return None
+
+    new_points_A1,test_A1 = generalAlgorithm.InternalConsistency(deepcopy(A_1),from_col,exceptional_vetor)
+    if not test_A1:
+        A_1 = new_points_A1
+
+
+    new_points,test = generalAlgorithm.MutualConsistency(deepcopy(A_0),deepcopy(A_1),from_col,exceptional_vetor)
+    if not test:
+        A_0 = new_points
     
     Y_array = deepcopy(Y).to_numpy()
 
@@ -36,7 +39,7 @@ def RSM(Y,A_0 : np.ndarray,A_1 : np.ndarray, from_col :int, exceptional_vetor : 
             for idx_A_1, el_A_1 in enumerate(A_1[:,from_col:]):
                 flag = True
                 for i in range(len(el_A_0)):
-                    if el_A_0[i] <= el_A_1[i]:
+                    if el_A_0[i] <= el_A_1[i]:                     
                         if not(el_Y[i] >= el_A_0[i] and el_Y[i] <=el_A_1[i]):
                             flag = False
                             break
@@ -56,6 +59,6 @@ def RSM(Y,A_0 : np.ndarray,A_1 : np.ndarray, from_col :int, exceptional_vetor : 
 
     name_columns = Y.columns.to_numpy()
     data = generalAlgorithm.Array2DataFarame(np.append(name_columns,'RSM'),Y_array)
-    data = data.sort_values(by=['RSM'])
+    data = data.sort_values(by=['RSM'], ascending= True, ignore_index= True)
 
     return data
