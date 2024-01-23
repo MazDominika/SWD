@@ -18,6 +18,7 @@ class UTE():
         pass
     
     def draw(self, screen):
+        screen.blit(repository.UTETitle, (90,30))
         screen.blit(repository.TabelaPunktow, (15,150))
         repository.WrocBtn.draw(screen)
         repository.WyswietlRankingBtn.draw(screen)
