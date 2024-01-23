@@ -18,7 +18,7 @@ class Topsis:
     def norm_with_weight(self,norm_matrix) -> np.ndarray:
         return norm_matrix*self.vector_norm
     
-    def ideal_point(self,matrix_norm_with_weight: np.ndarray ,ideal_vector: list)-> list[np.ndarray]:
+    def ideal_point(self,matrix_norm_with_weight: np.ndarray ,ideal_vector: list):
         ideal_result_vector = []
         antyideal_result_vector = []
         antyideal_vector = [min if x==max else max for x in ideal_vector ]
@@ -40,7 +40,7 @@ class Topsis:
 
 
     
-def Topsis_method(DataFrame,date_to_count :tuple|list,idela_vector :list,WeigthVector :list = None , antyideal_point :list = None ):
+def Topsis_method(DataFrame,date_to_count :tuple,idela_vector :list,WeigthVector :list = None , antyideal_point :list = None ):
 
     if np.sum(WeigthVector) != 1:
         return None
