@@ -40,7 +40,7 @@ class Topsis:
 
 
     
-def Topsis_method(DataFrame,date_to_count :tuple,idela_vector :list,WeigthVector :list = None , antyideal_point :list = None ):
+def Topsis_method(DataFrame,date_to_count :tuple|list,idela_vector :list,WeigthVector :list = None , antyideal_point :list = None ):
 
     if np.sum(WeigthVector) != 1:
         return None
