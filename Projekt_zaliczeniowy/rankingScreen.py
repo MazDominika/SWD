@@ -16,6 +16,12 @@ class Ranking():
             font = pygame.font.Font(None, 50)
             text = font.render(self.text,True,(255,255,255))
             screen.blit(text,(100,200))
+            repository.WrocRankingScreenBtn.draw(screen)
+        
+            if repository.WrocRankingScreenBtn.action == True:
+                repository.state =   repository.ScreenState .MENU
+                repository.WrocRankingScreenBtn.action = False
+
 
         else:
             if repository.rankingstate == repository.RankingState.RANKING:
@@ -82,19 +88,19 @@ class Ranking():
                 for r in rows[:10]:
                     font = pygame.font.Font(None, 30)
                     text = str(data.Ranking.loc[r,"trasa"])
-                    text_list = text.split("-", 10)
-                    if len(text_list) > 7:
+                    text_list = text.split(" ", 30)
+                    if len(text_list) > 15:
                         font = pygame.font.Font(None, 22)
-                        text = font.render("-".join(text_list[0:4]),True,(0,0,0))
+                        text = font.render(" ".join(text_list[0:11]).replace("- -", "-"),True,(0,0,0))
                         screen.blit(text,(x,y))
-                        text = font.render("-".join(text_list[4:7]),True,(0,0,0))
+                        text = font.render(" ".join(text_list[11:20]).replace("- -", "-"),True,(0,0,0))
                         screen.blit(text,(x,y+15))
-                        text = font.render("-".join(text_list[7:]),True,(0,0,0))
+                        text = font.render(" ".join(text_list[20:]).replace("- -", "-"),True,(0,0,0))
                         screen.blit(text,(x,y+30))
-                    elif len(text_list) > 3:
-                        text = font.render("-".join(text_list[0:3]),True,(0,0,0))
+                    elif len(text_list) > 10:
+                        text = font.render(" ".join(text_list[0:6]).replace("- -", "-"),True,(0,0,0))
                         screen.blit(text,(x,y))
-                        text = font.render("-".join(text_list[3:]),True,(0,0,0))
+                        text = font.render(" ".join(text_list[6:]).replace("- -", "-"),True,(0,0,0))
                         screen.blit(text,(x,y+18))
                     else:
                         text = font.render(text,True,(0,0,0))
