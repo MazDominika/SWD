@@ -7,7 +7,9 @@ import repository
 import uteScreen
 import rankingScreen
 
+
 pygame.init()
+
 isRunningFlag = True
 
 SCREEN_WIDTH = 800

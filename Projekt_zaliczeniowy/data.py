@@ -4,6 +4,7 @@ import numpy as np
 import topsisAlgorithm
 import uteStarAlgorithm 
 import rsmAlgorithm
+import SPAlgorithm
 
 
 
@@ -30,7 +31,9 @@ NamesColumnsInGoodOrder = ["Wysokosc","Dlugosc","Czas","Przewyzszenie","TempLato
 Szczyty = pd.read_excel(r"dataSheet\SZCZYTY.xlsx")
 
 def SPFunction():
-    pass
+    Ranking = SPAlgorithm.SP(Szczyty,3,SPDocelowe,SPStatusQuo,NamesColumnsInGoodOrder)
+    if Ranking is not None:
+        return Ranking.iloc[:,:-1]
 
 
 def RSMFunction():
