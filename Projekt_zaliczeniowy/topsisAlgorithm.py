@@ -18,7 +18,7 @@ class Topsis:
     def norm_with_weight(self,norm_matrix) -> np.ndarray:
         return norm_matrix*self.vector_norm
     
-    def ideal_point(self,matrix_norm_with_weight: np.ndarray ,ideal_vector: list):
+     def ideal_point(self,matrix_norm_with_weight: np.ndarray ,ideal_vector: list)-> list[np.ndarray]:
         ideal_result_vector = []
         antyideal_result_vector = []
         antyideal_vector = [min if x==max else max for x in ideal_vector ]
