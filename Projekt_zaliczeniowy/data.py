@@ -25,15 +25,18 @@ UteZaawansowanyVector = {"Wysokosc": max, "Przewyzszenie" : max, "Dlugosc": max,
 UteMinMaxVector = TopsisPodstawowyVector
 UteDocelowe = {"Wysokosc": 0, "Przewyzszenie" :0, "Dlugosc": 0, "Czas": 0, "TempZima" : 0, "TempLato" : 0, "Ocena" :0, "Got": 0}
 
+
+
 Ranking = None
 
-NamesColumnsInGoodOrder = ["Wysokosc","Dlugosc","Czas","Przewyzszenie","TempLato","TempZima","Ocena","Got"]
+NamesColumnsInGoodOrder = ["Wysokosc","Dlugosc","Czas","Przewyzszenie","TempZima","TempLato","Ocena","Got"]
 Szczyty = pd.read_excel(r"dataSheet\SZCZYTY.xlsx")
 
 def SPFunction():
     Ranking = SPAlgorithm.SP(Szczyty,3,SPDocelowe,SPStatusQuo,NamesColumnsInGoodOrder)
     if Ranking is not None:
-        return Ranking.iloc[:,:-1]
+        # return Ranking.iloc[:,:-1]
+        return Ranking
 
 
 def RSMFunction():
@@ -52,7 +55,8 @@ def RSMFunction():
                 if el is None:
                     idx_el = idx
                     break
-            return Ranking.iloc[:idx_el,:-1]
+            # return Ranking.iloc[:idx_el,:-1]
+            return Ranking.iloc[:idx_el,:]
         else:
             return None
         
@@ -64,7 +68,8 @@ def TopsisFunction():
     nadir = [np.min(x) if terms_vector[idx_x] == max else np.max(x) for idx_x, x in enumerate(generalAlgorithm.DataFrame2Array_without_string(Result_OWD_filtered).transpose())]
     Ranking = topsisAlgorithm.Topsis_method(Szczyty,(3,Szczyty.shape[1]),terms_vector,weight_vector,antyideal_point= nadir)
     if Ranking is not None:
-        return Ranking.iloc[:,:-1]
+        # return Ranking.iloc[:,:-1]
+        return Ranking
     
 
 def UTEStarFunction():
@@ -76,7 +81,8 @@ def UTEStarFunction():
     weights_vectors, vectors_compartments= uteStarAlgorithm.SetWeights(terms_vector,docelowe_vector,vectors_compartments)
     Ranking = uteStarAlgorithm.UTE_Star(Szczyty,vectors_compartments,weights_vectors,terms_vector)
     if Ranking is not None:
-        return Ranking.iloc[:,:11]
+        # return Ranking.iloc[:,:11]
+        return Ranking
    
 
 

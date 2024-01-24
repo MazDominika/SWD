@@ -93,7 +93,7 @@ def UTE_Star(X, compartments: np.ndarray, weights : np.ndarray, terms : list):
 
     name_columns = X.columns.to_numpy()
     data = d.Array2DataFarame(np.append(name_columns,[f"Wartosc u{idx + 1}" if idx != amount_new_column else "Ranking" for idx in range(amount_new_column + 1)]),X_array)
-    data = data.sort_values(by=['Ranking'],ascending= False,ignore_index= True)
+    # data = data.sort_values(by=['Ranking'],ascending= False,ignore_index= True)
 
     return data
 

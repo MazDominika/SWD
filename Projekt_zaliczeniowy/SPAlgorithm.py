@@ -86,8 +86,8 @@ def SP(Szczyty, from_col: int ,SPDocelowe, SPStatusQuo,NamesColumnsInGoodOrder):
 
         #Wyznaczenie odległości punktow do prostej          
         result = []
-        print("ARRAY SEL: ",selected_array[0])
-        print("POINTS: ", points[krzywa])
+        # print("ARRAY SEL: ",selected_array[0])
+        # print("POINTS: ", points[krzywa])
         for hills in range(len(selected_array)):
             add = 0
             min_value = 10000
@@ -98,14 +98,14 @@ def SP(Szczyty, from_col: int ,SPDocelowe, SPStatusQuo,NamesColumnsInGoodOrder):
                     min_value = np.sqrt(add)
             result.append(min_value)    
 
-        print(result)
+        # print(result)
     #Dodanie dodatkowej kolumny do DataFrame
     result = np.array([result]).transpose()
     selected_array = np.append(selected_array,result,axis=1)
     
     name_columns = Szczyty.columns.to_numpy()
     data = generalAlgorithm.Array2DataFarame(np.append(name_columns,'SP'),np.array(selected_array))
-    print(data)
+    # print(data)
     data = data.sort_values(by=['SP'])
 
     return data

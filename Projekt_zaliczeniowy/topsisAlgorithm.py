@@ -35,7 +35,8 @@ class Topsis:
         
         result = list((distance_minu/(distance_plus+distance_minu)).transpose()[0])
         self.products = self.products.assign(Topsis = result)
-        return self.products.sort_values(by=['Topsis'], ascending=False, ignore_index= True)
+        # return self.products.sort_values(by=['Topsis'], ascending=False, ignore_index= True)
+        return self.products
     
 
 
